@@ -14,7 +14,9 @@ from dataset_tools.templates import (
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME: str = "Substation Equipment"
-PROJECT_NAME_FULL: str = "A Semantically Annotated 15-Class Ground Truth Dataset for Substation Equipment"
+PROJECT_NAME_FULL: str = (
+    "A Semantically Annotated 15-Class Ground Truth Dataset for Substation Equipment"
+)
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################
@@ -24,7 +26,11 @@ LICENSE: License = License.CC_BY_4_0()
 APPLICATIONS: List[Union[Industry, Domain, Research]] = [Industry.Energy()]
 CATEGORY: Category = Category.EnergyAndUtilities()
 
-CV_TASKS: List[CVTask] = [CVTask.SemanticSegmentation(), CVTask.ObjectDetection(),CVTask.ObjectDetection()]
+CV_TASKS: List[CVTask] = [
+    CVTask.SemanticSegmentation(),
+    CVTask.ObjectDetection(),
+    CVTask.ObjectDetection(),
+]
 ANNOTATION_TYPES: List[AnnotationType] = [AnnotationType.InstanceSegmentation()]
 
 RELEASE_DATE: Optional[str] = "2023-05-01"  # e.g. "YYYY-MM-DD"
@@ -34,7 +40,7 @@ if RELEASE_DATE is None:
 HOMEPAGE_URL: str = "https://zenodo.org/record/7884270"
 # e.g. "https://some.com/dataset/homepage"
 
-PREVIEW_IMAGE_ID: int = None
+PREVIEW_IMAGE_ID: int = 4282875
 # This should be filled AFTER uploading images to instance, just ID of any image.
 
 GITHUB_URL: str = "https://github.com/dataset-ninja/substation-equipment"
@@ -63,20 +69,18 @@ AUTHORS: Optional[List[str]] = [
     "Romaneli, Eduardo",
     "Ganacim, Francisco",
     "Bobko, Nara",
-    "Pombeiro, Anselmo"
+    "Pombeiro, Anselmo",
 ]
 
 ORGANIZATION_NAME: Optional[Union[str, List[str]]] = [
     "Universidade Tecnológica Federal do Paraná",
     "Pontifícia Universidade Católica do Rio de Janeiro",
-    "Paranaense de Energia SA (Copel)"
-
-
+    "Paranaense de Energia SA (Copel)",
 ]
 ORGANIZATION_URL: Optional[Union[str, List[str]]] = [
     "https://www.utfpr.edu.br/",
     "https://www.puc-rio.br/index.html",
-    "https://www.copel.com/site/"
+    "https://www.copel.com/site/",
 ]
 
 # Set '__PRETEXT__' or '__POSTTEXT__' as a key with string value to add custom text. e.g. SLYTAGSPLIT = {'__POSTTEXT__':'some text}

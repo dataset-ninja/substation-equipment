@@ -9,6 +9,7 @@ import shutil
 
 from tqdm import tqdm
 
+
 def download_dataset(teamfiles_dir: str) -> str:
     """Use it for large datasets to convert them on the instance"""
     api = sly.Api.from_env()
@@ -30,7 +31,7 @@ def download_dataset(teamfiles_dir: str) -> str:
             total=fsize,
             unit="B",
             unit_scale=True,
-        ) as pbar:        
+        ) as pbar:
             api.file.download(team_id, teamfiles_path, local_path, progress_cb=pbar)
         dataset_path = unpack_if_archive(local_path)
 
@@ -47,7 +48,9 @@ def download_dataset(teamfiles_dir: str) -> str:
                     unit="B",
                     unit_scale=True,
                 ) as pbar:
-                    api.file.download(team_id, teamfiles_path, local_path, progress_cb=pbar)
+                    api.file.download(
+                        team_id, teamfiles_path, local_path, progress_cb=pbar
+                    )
 
                 sly.logger.info(f"Start unpacking archive '{file_name_with_ext}'...")
                 unpack_if_archive(local_path)
@@ -58,7 +61,8 @@ def download_dataset(teamfiles_dir: str) -> str:
 
         dataset_path = storage_dir
     return dataset_path
-    
+
+
 def count_files(path, extension):
     count = 0
     for root, dirs, files in os.walk(path):
@@ -66,7 +70,8 @@ def count_files(path, extension):
             if file.endswith(extension):
                 count += 1
     return count
-    
+
+
 def convert_and_upload_supervisely_project(
     api: sly.Api, workspace_id: int, project_name: str
 ) -> sly.ProjectInfo:
@@ -76,12 +81,10 @@ def convert_and_upload_supervisely_project(
     json_anns_path = os.path.join(dataset_path, "labels_json")
     batch_size = 50
 
-
     def swap_cords(cords):
         for cord in cords:
             cord[0], cord[1] = cord[1], cord[0]
         return cords
-
 
     def create_ann(image_path):
         labels = []
@@ -106,7 +109,6 @@ def convert_and_upload_supervisely_project(
                 labels.append(curr_label)
             return sly.Annotation(img_size=(img_height, img_wight), labels=labels)
 
-
     categories = {
         "open_blade_disconnect_switch": (162, 0, 255),
         "closed_blade_disconnect_switch": (97, 16, 162),
@@ -122,11 +124,15 @@ def convert_and_upload_supervisely_project(
         "power_transformer": (255, 182, 0),
         "current_transformer": (138, 138, 0),
         "potential_transformer": (162, 48, 0),
-        "tripolar_disconnect_switch": (162, 0, 96)
+        "tripolar_disconnect_switch": (162, 0, 96),
     }
-    obj_classes = [sly.ObjClass(cat, sly.Polygon, categories[cat]) for cat in categories]
+    obj_classes = [
+        sly.ObjClass(cat, sly.Polygon, categories[cat]) for cat in categories
+    ]
 
-    project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
+    project = api.project.create(
+        workspace_id, project_name, change_name_if_conflict=True
+    )
     meta = sly.ProjectMeta(obj_classes=obj_classes)
     api.project.update_meta(project.id, meta.to_json())
 
