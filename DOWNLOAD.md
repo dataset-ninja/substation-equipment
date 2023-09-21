@@ -1,6 +1,6 @@
 Dataset **Substation Equipment** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/supervisely-supervisely-assets-public/teams_storage/O/b/bP/lbCKkXHbxoVrk6VTHY7ZQ8XwpCW1emIQuog77F0PxXESl7SB3EZmRpQ5O25IhO5SEczcT0bNUTDhasorRxnHoGvLjiYS5aPKmWzo4aqLpQXa0teImooTHTX9tbkl.tar)
+ [Download](Set 'HIDE_DATASET=False' to generate download link)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
