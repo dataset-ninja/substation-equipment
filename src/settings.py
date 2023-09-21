@@ -17,7 +17,7 @@ PROJECT_NAME: str = "Substation Equipment"
 PROJECT_NAME_FULL: str = (
     "A Semantically Annotated 15-Class Ground Truth Dataset for Substation Equipment"
 )
-HIDE_DATASET = True  # set False when 100% sure about repo quality
+HIDE_DATASET = False  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
