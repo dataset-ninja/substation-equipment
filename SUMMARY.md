@@ -1,4 +1,4 @@
-**A Semantically Annotated 15-Class Ground Truth Dataset for Substation Equipment** is a dataset for instance segmentation, object detection, and semantic segmentation tasks. It is used in the energy industry. 
+**A Semantically Annotated 15-Class Ground Truth Dataset for Substation Equipment** is a dataset for instance segmentation, object detection, semantic segmentation, and weakly supervised learning tasks. It is used in the energy industry. 
 
 The dataset consists of 1660 images with 50604 labeled objects belonging to 15 different classes including *porcelain_pin_insulator*, *closed_blade_disconnect_switch*, *recloser*, and other: *glass_disc_insulator*, *current_transformer*, *lightning_arrester*, *power_transformer*, *breaker*, *potential_transformer*, *closed_tandem_disconnect_switch*, *open_tandem_disconnect_switch*, *tripolar_disconnect_switch*, *muffle*, *fuse_disconnect_switch*, and *open_blade_disconnect_switch*.
 
